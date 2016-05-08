@@ -31,7 +31,7 @@ public class GenericLLParser implements Parser {
 
 	public GenericLLParser(Grammar g) {
 		this.g = g;
-		this.calc = new MyLLCalc(g); // here use your own class
+		this.calc = new LLCalcImplementation(g); // here use your own class
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class GenericLLParser implements Parser {
 	 * otherwise, it is a non-terminal that should be expanded 
 	 * according to the next token in the token stream, using the
 	 * FIRST+-lookup table and recursively calling {@link #parse(Rule)}
-	 * @param symb the symbol according to which the token stream 
+	 * @param symb the symbol according to which the token stream
 	 * should be parsed
 	 * @return the sub-AST resulting from the parsing of symb;
 	 * or null if the symbol expands to the empty string
@@ -55,6 +55,7 @@ public class GenericLLParser implements Parser {
 	 */
 	private AST parse(Symbol symb) throws ParseException {
 		// fill in
+		return null;
 	}
 
 	/** Parses the start of the token stream according to a given
@@ -68,6 +69,7 @@ public class GenericLLParser implements Parser {
 	 */
 	private AST parse(Rule rule) throws ParseException {
 		// fill in
+		return null;
 	}
 
 	/** Uses the lookup table to look up the rule to which
@@ -130,5 +132,6 @@ public class GenericLLParser implements Parser {
 	/** Constructs the {@link #ll1Table}. */
 	private Map<NonTerm, Map<Term, Rule>> calcLL1Table() {
 		// fill in
+		return null;
 	}
 }
