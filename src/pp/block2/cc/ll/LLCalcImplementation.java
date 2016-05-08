@@ -20,7 +20,6 @@ public class LLCalcImplementation implements LLCalc{
     @Override
     public Map<Symbol, Set<Term>> getFirst() {
         HashMap result = new HashMap<Symbol, Set<Term>>();
-        Set nonterm = grammar.getNonterminals();
         List<Rule> rules  = grammar.getRules();
         for (Rule rule: rules ) {
             result.put(rule.getLHS(), rule.getRHS());
@@ -30,6 +29,12 @@ public class LLCalcImplementation implements LLCalc{
 
     @Override
     public Map<NonTerm, Set<Term>> getFollow() {
+        HashMap result = new HashMap<Symbol, Set<Term>>();
+        List<Rule> rules  = grammar.getRules();
+        for (Rule rule: rules ) {
+            for()
+            result.put(rule.getRHS(), );
+        }
         return null;
     }
 
