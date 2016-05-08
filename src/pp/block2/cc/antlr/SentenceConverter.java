@@ -8,8 +8,7 @@ import pp.block2.cc.Parser;
 import pp.block2.cc.SymbolFactory;
 import pp.block2.cc.ll.Sentence;
 
-public class SentenceConverter //
-		extends SentenceBaseListener implements Parser {
+public class SentenceConverter /*extends SentenceBaseListener*/ implements Parser {
 	/** Factory needed to create terminals of the {@link Sentence}
 	 * grammar. See {@link pp.block2.cc.ll.SentenceParser} for
 	 * example usage. */
@@ -22,6 +21,7 @@ public class SentenceConverter //
 	@Override
 	public AST parse(Lexer lexer) throws ParseException {
 		// Fill in
+		return null;
 	}
 	
 	// From here on overwrite the listener methods
