@@ -1,9 +1,6 @@
 // Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/ll\Sentence.g4 by ANTLR 4.5.1
 package pp.block2.cc.ll;
 
-import jdk.nashorn.internal.parser.Lexer;
-
-package pp.block2.cc.ll;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
