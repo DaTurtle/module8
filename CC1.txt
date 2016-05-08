@@ -1,0 +1,89 @@
+--1.1
+back end: 	Translation from intermediate code to the machine code, as in,
+			selecting the target machine operations to simulate/implement what is written in the intermediate code
+front end: 	First checks if the written code is according to the proper syntax and then compiles it into an intermidiate 
+			representation code.
+grammar:	The rules which a set of strings in the source code has to follow.
+instruction scheduling: The reordering of code instructions for optimizing speed.
+instruction selection: rewriting code into machine instructions at the back end.
+optimizer: a part of the compiler that does the instruction scheduling.
+parsing: The process of automatically finding derivations.
+register allocation: during the back end phase the compiler just asumes that there are enough registers to work with (while in reality these are limited)
+					 the register allocation creates virtual registers to work with and maps these onto the real registers.
+scanning: 	transforming a stream of characters into a stream of words in th input language.
+type checking: a phase that checks for type-consistent uses of names in the input program.
+
+--1.2
+	1 sentence[subject[modifier[adjective] noun] verb object[modifier[adjective] noun]]
+	2 the verb is in singular form instead of the plurar it is supposed to be, it is comparable to a declaration to a list that is done wrong.
+	This would be detected during the type checking.
+	3 type checking as stated in my previous answer and parsing (for putting the words in catagories)
+	
+--1.3
+	modifier -> adjective modifier
+	object -> particle noun
+	object -> particle modifier noun
+--1.4
+	1	loadAI rarp, @d -> rd		//load 'd'
+		loadI 2        	-> r2		//constant 2 into r2
+		loadAI rarp, @a	-> ra		//load 'a'
+		loadAI rarp, @b -> rb		//load 'b'
+		add	   ra, rb	-> ra		//add ra+rb in ra
+		mult   ra, r2	-> ra		//multiply ra*r2 in ra
+		add    ra, rd 	-> rd		//add ra+rd in rd
+		storeAI rd 		-> rarp, @d // write rd back to 'd'  
+	2 
+		loadAI rarp, @d -> rd		//load 'd'
+		loadAI rarp, @a	-> ra		//load 'a'
+		loadAI rarp, @b -> rb		//load 'b'
+		add	   ra, rb	-> ra		//add ra+rb in ra
+		add   ra, ra	-> ra		//"multiply ra*2" in ra
+		add    ra, rd 	-> rd		//add ra+rd in rd
+		storeAI rd 		-> rarp, @d // write rd back to 'd'
+	3														 start|end
+		loadAI rarp, @a	-> ra		//load 'a'					1 | 3
+		loadAI rarp, @b -> rb		//load 'b'					2 | 4
+		loadAI rarp, @d -> rd		//load 'd'					3 | 5
+		add	   ra, rb	-> ra		//add ra+rb in ra			4 | 4
+		add   ra, ra	-> ra		//"multiply ra*2" in ra		5 | 5
+		add    ra, rd 	-> rd		//add ra+rd in rd			6 | 6
+		storeAI rd 		-> rarp, @d // write rd back to 'd'		7 | 9
+		
+--1.5
+	-->S0-([a..z][A..Z])->s1-([a..z][A..Z][0..9])->s2-([a..z][A..Z][0..9])->s3-([a..z][A..Z][0..9])->s4-([a..z][A..Z][0..9])->s5-([a..z][A..Z][0..9])->s6
+	dat was het?
+
+--1.6
+	-->S0-(quotationmark)->s1-([a..z][A..Z])->S1-(quotationmark)->S2
+	\"(~(")|\"\")*\"
+
+--1.7
+	1	(i) [L][(a)]+[ ]*
+		(ii) [L][(a)]+[ ]*[L][(a)]+[ ]*
+		(iii) [L][(a)]+[ ]*[L][(a)]+[ ]*[L][(a)]+[ ]*[Li][ ]*
+	2	
+		in notebook
+	3 	scanning for (ii) is unnecessary as it a token that consists of two (i) tokens, but token 3 makes it neccessary to rember how many proceding (i) there were.
+		(1) "Laaaa_La" + "Laa" (2) "La_La" + "La_La_" + "Li"
+		
+--1.8
+
+--2.1
+sentential form: a string that occurs as one step in a valid derivation (a sequence of rewriting that begins
+with the grammar's start symbol and end with a sentence in the language) of terminal/nonterminal symbols
+parse tree: a graph that represents a derivation.
+ambiguity: a grammar is abiguous if it has multiple rightmost and/or leftmost derivations
+left/right recursion: a rule in a CFG is left recursive if the first symbol on its right-hand side is the symbol
+on its left-hand side or can derive that symbol. The former case is called direct left recursion, while the latter
+case is called indirect left recursion.
+recursive-descent parsing: a set of mutally recursive producers , one for each non-terminal in the grammar.
+LL(x): a top-down parser for a subset of context-free languages. it parses the input form left to right, performing the leftmost derviation of the sentence.
+bottom-up parsing:  processes the text's lowest-level small details first, before its mid-level structures, and leaving the highest-level overall structure to last.
+LR(x):  a type of bottom-up parsers that efficiently handle deterministic context-free languages in guaranteed linear time.
+ the LR parser waits until it has seen an entire instance of some grammar pattern before committing to what it has found.
+ 
+ --2.2
+	1
+		
+
+	
