@@ -131,7 +131,8 @@ public class LLCalcImplementation implements LLCalc {
                     termy.addAll((Set<Term>) result.get((Symbol) rule.getRHS().get(0)));
                     //remove empties?
                     int i = 1;
-                    while( (HashSet<Symbol>) result.get((Term) rule.getRHS().get(i)).contains(Symbol.EMPTY) && i <= k-1){
+                    while( (HashSet<Symbol>) result.get((Term) rule.getRHS().get(i)).contains(Symbol.EMPTY) && i <= rule.getRHS().size() -1){
+                        //dit klopt ook al allemaal niet
                         termy.addAll((HashSet<Term>) result.get((Symbol) rule.getRHS().get(i+1)));
                         i++;
                     }
