@@ -36,4 +36,25 @@ public class Grammars {
 		g.addRule(mod, adj);
 		return g;
 	}
+
+	public static Grammar makeGrammarIf() {
+		// Define the non-terminals
+		NonTerm stat = new NonTerm("Stat");
+		NonTerm elsePart = new NonTerm("ElsePart");
+		// Define the terminals, using the Sentence.g4 lexer grammar
+		SymbolFactory fact = new SymbolFactory(If.class);
+		Term iffy = fact.getTerminal(If.IF);
+		Term expressy = fact.getTerminal(If.COND);
+		Term theny = fact.getTerminal(If.THEN);
+		Term elsy = fact.getTerminal(If.ELSE);
+		Term assigny = fact.getTerminal(If.ASSIGN);
+		// Build the context free grammar
+		Grammar g = new Grammar(stat);
+		g.addRule(stat, assigny);
+		g.addRule(stat, iffy, expressy, theny, stat, elsePart);
+		g.addRule(elsePart, elsy, stat);
+		//g.addRule(elsePart, Symbol.EMPTY);
+		// moet deze episilon er wel bij?
+		return g;
+	}
 }

@@ -4,11 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -24,6 +20,70 @@ public class LLCalcTest {
 		Grammar g = Grammars.makeSentence();
 		// Without the last (recursive) rule, the grammar is LL-1
 		assertTrue(createCalc(g).isLL1());
+	}
+
+	@Test
+	public void testIf() {
+		Grammar g = Grammars.makeGrammarIf();
+		NonTerm stat = g.getNonterminal("Stat");
+		NonTerm elsePart = g.getNonterminal("ElsePart");
+		Term iffy = g.getTerminal(If.IF);
+        Term expressy = g.getTerminal(If.COND);
+        Term elsy = g.getTerminal(If.ELSE);
+        Term assigny = g.getTerminal(If.ASSIGN);
+		Term eof = Symbol.EOF;
+		Term empty = Symbol.EMPTY;
+		LLCalc calc = createCalc(g);
+		//FIRST
+		Map<Symbol, Set<Term>> first = calc.getFirst();
+		Map<Symbol, Set<Term>> test1Map = new HashMap<Symbol, Set<Term>>();
+        HashSet<Term> test1Set = new HashSet<Term>();
+        test1Set.add(iffy);
+        test1Set.add(assigny);
+        HashSet<Term> test1dot1Set = new HashSet<Term>();
+        for( Term term : g.getTerminals()){
+            HashSet<Term> tempo = new HashSet<Term>();
+            tempo.add(term);
+            test1Map.put(term, tempo);
+        }
+        test1dot1Set.add(elsy);
+        test1dot1Set.add(empty);
+		test1Map.put(stat, test1Set);
+        test1Map.put(elsePart, test1dot1Set);
+		assertEquals(test1Map, first.get(stat));
+		//MOAR test to be made
+		//FOLLOW
+		Map<NonTerm, Set<Term>> follow = calc.getFollow();
+        Map<Symbol, Set<Term>> test2Map = new HashMap<Symbol, Set<Term>>();
+        HashSet<Term> test2Set = new HashSet<Term>();
+        test2Set.add(eof);
+        test2Set.add(expressy);
+        HashSet<Term> test2dot1Set = new HashSet<Term>();
+        test2dot1Set.add(assigny);
+        test2dot1Set.add(iffy);
+		test2dot1Set.add(eof);
+        test2Map.put(stat, test2Set);
+        test2Map.put(elsePart, test2dot1Set);
+		assertEquals(test2Map, follow.get(stat));
+		//MOAR test to be made
+		//FIRSTP
+		Map<Rule, Set<Term>> firstp = calc.getFirstp();
+        Map<Rule, Set<Term>> test3Map = new HashMap<Rule, Set<Term>>();
+		List <Rule> elsePartRules = g.getRules(elsePart);
+        HashSet<Term> test3Set = new HashSet<Term>();
+        test3Set.add(elsy);
+        test3Set.add(assigny);
+        test3Set.add(iffy);
+        test3Map.put(g.getRules().get(0), test3Set);
+        assertEquals(test3Map, firstp.get(elsePartRules.get(0)));
+        Map<Rule, Set<Term>> test3Mapdot = new HashMap<Rule, Set<Term>>();
+        HashSet<Term> test3dotSet = new HashSet<Term>();
+        test3dotSet.add(eof);
+        test3Mapdot.put(g.getRules().get(1), test3dotSet);
+        assertEquals(test3Mapdot, firstp.get(elsePartRules.get(1)));
+		assertFalse(calc.isLL(1));
+		//MOAR test to be made
+
 	}
 
 	@Test
