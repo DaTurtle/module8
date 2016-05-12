@@ -81,7 +81,7 @@ public class LLCalcTest {
         test3dotSet.add(eof);
         test3Mapdot.put(g.getRules().get(1), test3dotSet);
         assertEquals(test3Mapdot, firstp.get(elsePartRules.get(1)));
-		assertFalse(calc.isLL(1));
+		assertFalse(calc.isLL1());
 		//MOAR test to be made
 
 	}
