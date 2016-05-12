@@ -20,11 +20,12 @@ public class LocalCache {
             response = response_;
         }
     }
-    
+
+//this should be synched, but perhaps not here
     public void put(String request, String response) {
         cacheMap.put(request, new CacheEntry(System.currentTimeMillis(), response));
     }
-    
+// along with this, I mean this is a cache were clients will be writing too.
     public String get(String request) {
         CacheEntry ce = cacheMap.get(request);
         

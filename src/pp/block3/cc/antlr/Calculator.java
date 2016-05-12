@@ -7,6 +7,7 @@ import pp.block3.cc.antlr.CalcParser.NumberContext;
 import pp.block3.cc.antlr.CalcParser.ParContext;
 import pp.block3.cc.antlr.CalcParser.PlusContext;
 import pp.block3.cc.antlr.CalcParser.TimesContext;
+import pp.block3.cc.antlr.CalcParser.MinusContext;
 
 public class Calculator extends CalcBaseListener {
 	/** Map storing the val attribute for all parse tree nodes. */
@@ -33,9 +34,10 @@ public class Calculator extends CalcBaseListener {
 	}
 
 	@Override
-	public void exitPlus(PlusContext ctx) {
-		set(ctx, val(ctx.expr(0)) + val(ctx.expr(1)));
-	}
+	public void exitPlus(PlusContext ctx) {set(ctx, val(ctx.expr(0)) + val(ctx.expr(1)));}
+
+	@Override
+	public void exitMinus(MinusContext ctx) { set(ctx, val(ctx.expr()) * -1); }
 
 	/** Sets the val attribute of a given node. */
 	private void set(ParseTree node, int val) {

@@ -10,7 +10,8 @@ public class RequestCountLogger extends TimerTask {
     private int numConnections;
     private int numRequests;
     private Set<Integer> delaySet;
-    
+
+// This wille be used by multiple threads and is not thread safe
     public RequestCountLogger(int numConnections_) {
         numConnections = numConnections_;
         numRequests = 0;
@@ -19,7 +20,7 @@ public class RequestCountLogger extends TimerTask {
         Timer timer = new Timer(true);
         timer.schedule(this, 0, 1000);
     }
-    
+//delayset is not synched
     public void logRequest(int localThreadNumber, String request, 
                            String response, int delay) {
         numRequests++;

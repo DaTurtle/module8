@@ -82,8 +82,14 @@ bottom-up parsing:  processes the text's lowest-level small details first, befor
 LR(x):  a type of bottom-up parsers that efficiently handle deterministic context-free languages in guaranteed linear time.
  the LR parser waits until it has seen an entire instance of some grammar pattern before committing to what it has found.
  
- --2.2
-	1
+ --3.1
+operator overloading: The name for the attribute operators have when they can have different meanings depending on the context/argument types they are in.
+type intference: The process of determining the types for each name and each expression in the code.
+synthesized attribute: An attribute defined wholly in terms of the attributes of the node, its children, and constant (appears in bottom-up information flow).
+inherited attribute: An attribute defined wholly in terms of the node's own attributes and those of its siblings or its parent in the parse tree (appears in top-down and lateral information flow).
+syntax-directed translation: creates a syntax-directed definition by adding actions to the productions in a context-free grammar.
+
+
 		
 
 	

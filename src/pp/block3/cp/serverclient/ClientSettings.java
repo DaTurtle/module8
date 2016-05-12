@@ -11,11 +11,11 @@ public class ClientSettings {
     private Settings settings = null;
     private String filename;
     private ReentrantLock initializationLock = new ReentrantLock();
-    
+//There is no documentation!
     public ClientSettings(String filename_) {
         filename = filename_;
     }   
-    
+//This lock
     public Settings getSettings() {
         initializationLock.lock();
         if (settings == null) {
@@ -33,7 +33,7 @@ public class ClientSettings {
         }
         
         private Properties prop = new Properties();
-        
+//getter are not synchronized so they ca return faulty data
         private int requestsPerSecond;
         public int getRequestsPerSecond() {
             return requestsPerSecond;
