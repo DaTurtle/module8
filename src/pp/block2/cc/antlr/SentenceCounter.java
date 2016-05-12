@@ -13,7 +13,6 @@ import pp.block2.cc.antlr.SentenceParser.ModifierContext;
 import pp.block2.cc.antlr.SentenceParser.ObjectContext;
 import pp.block2.cc.antlr.SentenceParser.SentenceContext;
 import pp.block2.cc.antlr.SentenceParser.SubjectContext;
-import pp.block2.cc.ll.SentenceParser;
 
 public class SentenceCounter extends SentenceBaseListener {
 	/** Map from Antlr tree nodes to ASTs. */

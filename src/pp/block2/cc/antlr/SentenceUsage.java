@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import pp.block2.cc.ll.SentenceParser;
+
 
 public class SentenceUsage {
 	public static void main(String[] args) {
