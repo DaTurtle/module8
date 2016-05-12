@@ -74,14 +74,21 @@ public class LLCalcImplementation implements LLCalc{
 
     @Override
     public Map<Rule, Set<Term>> getFirstp() {
-
-        //TODO set firstplusset
-        return null;
+        Map<Rule, Set<Term>> res = new HashMap<>();
+        for (Rule r : grammar.getRules()) {
+            res.put(r, getTerms(r.getLHS()));
+        }
+        return res;
     }
 
     @Override
     public boolean isLL1() {
-        //TODO isLL1
-        return false;
+        Map<Rule, Set<Term>> firstp = getFirstp();
+        boolean res = true;
+        for (Rule r : firstp.keySet()) {
+            Set<Term> rhs = firstp.get(r);
+            res = res && (rhs.size()==1);
+        }
+        return res;
     }
 }

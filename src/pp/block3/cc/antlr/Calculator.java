@@ -12,7 +12,7 @@ import pp.block3.cc.antlr.CalcParser.MinusContext;
 public class Calculator extends CalcBaseListener {
 	/** Map storing the val attribute for all parse tree nodes. */
 	private ParseTreeProperty<Integer> vals;
-
+a
 	/** Initialises the calculator before using it to walk a tree. */
 	public void init() {
 		this.vals = new ParseTreeProperty<Integer>();
