@@ -86,7 +86,9 @@ LR(x):  a type of bottom-up parsers that efficiently handle deterministic contex
 operator overloading: The name for the attribute operators have when they can have different meanings depending on the context/argument types they are in.
 type intference: The process of determining the types for each name and each expression in the code.
 synthesized attribute: An attribute defined wholly in terms of the attributes of the node, its children, and constant (appears in bottom-up information flow).
+    a rule that defines an attribute for the production's left-hand side creates a synthesized attribute.
 inherited attribute: An attribute defined wholly in terms of the node's own attributes and those of its siblings or its parent in the parse tree (appears in top-down and lateral information flow).
+    a rule that defines an attribute for the productions right-hand side creates a inherited attribute.
 syntax-directed translation: creates a syntax-directed definition by adding actions to the productions in a context-free grammar.
 
 
