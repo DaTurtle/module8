@@ -1,0 +1,16 @@
+lexer grammar Ex3Vocab;
+
+@header{package pp.block3.cc.antlr;}
+
+EXPO  : '^';
+PLUS  : '+';
+EQUAL : '=';
+LPAR   : '(';
+RPAR   : ')';
+
+NUMBER : [0-9]+;
+STRING : [0-9a-zA-Z]+;
+BOOL   : [true] | [false];
+
+// ignore whitespace
+WS : [ \t\n\r] -> skip;

@@ -1,0 +1,12 @@
+grammar Ex3v1;
+
+import Ex3Vocab;
+
+expr : expr EXPO expr  # exponent
+     | expr PLUS expr  # plus
+     | expr EQUAL expr # equal
+     | STRING          # string
+     | NUMBER          # number
+     | BOOL            # boolean
+     ;
+

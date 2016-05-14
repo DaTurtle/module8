@@ -20,7 +20,8 @@ public class SentenceConverter extends SentenceBaseListener implements Parser {
 
 	@Override
 	public AST parse(Lexer lexer) throws ParseException {
-		// Fill in
+
+		//Wat moet ik hier doen, ik snap niet hoe!!
 		return null;
 	}
 	
