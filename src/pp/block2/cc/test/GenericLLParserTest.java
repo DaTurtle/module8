@@ -14,10 +14,7 @@ import org.junit.Test;
 import pp.block2.cc.AST;
 import pp.block2.cc.ParseException;
 import pp.block2.cc.Parser;
-import pp.block2.cc.ll.GenericLLParser;
-import pp.block2.cc.ll.Grammars;
-import pp.block2.cc.ll.Sentence;
-import pp.block2.cc.ll.SentenceParser;
+import pp.block2.cc.ll.*;
 
 public class GenericLLParserTest {
 	private Parser parser1;
@@ -35,6 +32,17 @@ public class GenericLLParserTest {
 		fails("all undergraduate students love all compilers");
 		fails("all undergraduate students love love.");
 		fails("all undergraduate students all compilers.");
+	}
+
+	@Test
+	public void testCCExercise4() {
+		this.lexerType = CCExercise4.class;
+		this.parser1 = new CCGSGDSGSDGDSGDSFGDS();
+		this.parser2 = new GenericLLParser(Grammars.makeCCExercise4());
+		compare("abaa");
+		compare("cababcbca");
+		compare("bbcca");
+		compare("bbcba");
 	}
 
 	private void fails(String text) {

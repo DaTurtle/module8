@@ -22,7 +22,7 @@ public class LLCalcTest {
 		assertTrue(createCalc(g).isLL1());
 	}
 
-	@Test
+	/*@Test
 	public void testIf() {
 		Grammar g = Grammars.makeGrammarIf();
 		NonTerm stat = g.getNonterminal("Stat");
@@ -84,6 +84,40 @@ public class LLCalcTest {
 		assertFalse(calc.isLL1());
 		//MOAR test to be made
 
+	}*/
+	@Test
+	public void testIf(){
+		Grammar g = Grammars.makeGrammarIf();
+		//Non Term
+		NonTerm stat = new NonTerm("Stat");
+		NonTerm elsepart = new NonTerm("ElsePart");
+		// define the terminals
+		Term ifT = g.getTerminal(If.IF);
+		Term then = g.getTerminal(If.THEN);
+		Term cond = g.getTerminal(If.COND);
+		Term elseT = g.getTerminal(If.ELSE);
+		Term assign = g.getTerminal(If.ASSIGN);
+		Term eof = Symbol.EOF;
+		Term empty = Symbol.EMPTY;
+		LLCalc calc = createCalc(g);
+		//FIRST
+		Map<Symbol,Set<Term>> first = calc.getFirst();
+		assertEquals(set(assign,ifT),first.get(stat));
+		assertEquals(set(elseT,eof,empty),first.get(elsepart));
+		//FOLLOW
+		Map<NonTerm, Set<Term>> follow = calc.getFollow();
+		assertEquals(set(elseT,eof),follow.get(stat));
+		assertEquals(set(elseT,eof),follow.get(elsepart));
+		//FIRST+
+		Map<Rule,Set<Term>> firstp = calc.getFirstp();
+		List<Rule> elsepartRules = g.getRules(elsepart);
+		List<Rule> statRules = g.getRules(stat);
+		assertEquals(set(elseT),firstp.get(elsepartRules.get(0)));
+		assertEquals(set(empty,elseT,eof),firstp.get(elsepartRules.get(1)));
+		assertEquals(set(assign),firstp.get(statRules.get(0)));
+		assertEquals(set(ifT),firstp.get(statRules.get(1)));
+		//check if LL1
+		assertFalse(calc.isLL1());
 	}
 
 	@Test
@@ -123,6 +157,57 @@ public class LLCalcTest {
 		assertEquals(set(adj), firstp.get(subjRules.get(1)));
 		// is-LL1-test
 		assertFalse(calc.isLL1());
+	}
+
+	@Test
+	public void testCC4(){
+		Grammar g = Grammars.makeCCExercise4();
+		//Define non-terminals
+		NonTerm l = new NonTerm("L");
+		NonTerm r = new NonTerm("R");
+		NonTerm r2 = new NonTerm("R'");
+		NonTerm q = new NonTerm("Q");
+		NonTerm q2 = new NonTerm("Q'");
+		// define the terminals
+		Term a = g.getTerminal(CCExercise4.A);
+		Term b = g.getTerminal(CCExercise4.B);
+		Term c = g.getTerminal(CCExercise4.C);
+		Term eof = Symbol.EOF;
+		Term empty = Symbol.EMPTY;
+		LLCalc calc = createCalc(g);
+		//FIRST
+		Map<Symbol,Set<Term>> first = calc.getFirst();
+		assertEquals(set(a,b,c),first.get(l));
+		assertEquals(set(a,c),first.get(r));
+		assertEquals(set(b,empty),first.get(r2));
+		assertEquals(set(b),first.get(q));
+		assertEquals(set(b,c),first.get(q2));
+		//FOLLOW
+		Map<NonTerm, Set<Term>> follow = calc.getFollow();
+		assertEquals(set(eof),follow.get(l));
+		assertEquals(set(a),follow.get(r));
+		assertEquals(set(a),follow.get(r2));
+		assertEquals(set(b),follow.get(q));
+		assertEquals(set(b),follow.get(q2));
+		//FIRST+
+		Map<Rule,Set<Term>> firstp = calc.getFirstp();
+		List<Rule> lRules = g.getRules(l);
+		List<Rule> rRules = g.getRules(r);
+		List<Rule> r2Rules = g.getRules(r2);
+		List<Rule> qRules = g.getRules(q);
+		List<Rule> q2Rules = g.getRules(q2);
+		assertEquals(set(a,c),firstp.get(lRules.get(0)));
+		assertEquals(set(b),firstp.get(lRules.get(1)));
+		assertEquals(set(a),firstp.get(rRules.get(0)));
+		assertEquals(set(c),firstp.get(rRules.get(1)));
+		assertEquals(set(b),firstp.get(r2Rules.get(0)));
+		assertEquals(set(a,empty),firstp.get(r2Rules.get(1)));
+		assertEquals(set(b),firstp.get(qRules.get(0)));
+		assertEquals(set(b),firstp.get(q2Rules.get(0)));
+		assertEquals(set(c),firstp.get(q2Rules.get(1)));
+
+		//check if LL1
+		assertTrue(calc.isLL1());
 	}
 
 	/** Creates an LL1-calculator for a given grammar. */

@@ -1,9 +1,6 @@
 package pp.block2.cc.ll;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Token;
@@ -54,8 +51,24 @@ public class GenericLLParser implements Parser {
 	 * because the token stream does not contain the expected symbols
 	 */
 	private AST parse(Symbol symb) throws ParseException {
-		// fill in
-		return null;
+		AST result = null;
+		if (symb instanceof Term) {
+			Token next = next();
+			int tokenType = ((Term) symb).getTokenType();
+			if (next.getType() != tokenType) {
+				throw new ParseException(String.format(
+						"Line %d:%d - expected token '%s' but found '%s'",
+						next.getLine(), next.getCharPositionInLine(),
+						tokenType, next.getType()));
+			} else {
+				result = new AST((Term)symb,next);
+			}
+		} else if (symb instanceof NonTerm){
+			result = parse(lookup((NonTerm) symb));
+		} else {
+			throw new ParseException("Wrong symbol implementation, expected Terminal and Non Terminal");
+		}
+		return result;
 	}
 
 	/** Parses the start of the token stream according to a given
@@ -68,8 +81,11 @@ public class GenericLLParser implements Parser {
 	 * because the token stream does not contain the expected symbols
 	 */
 	private AST parse(Rule rule) throws ParseException {
-		// fill in
-		return null;
+		AST result = new AST(rule.getLHS());
+		for(Symbol symb : rule.getRHS()) {
+			result.addChild(parse(symb));
+		}
+		return result;
 	}
 
 	/** Uses the lookup table to look up the rule to which
@@ -131,7 +147,17 @@ public class GenericLLParser implements Parser {
 
 	/** Constructs the {@link #ll1Table}. */
 	private Map<NonTerm, Map<Term, Rule>> calcLL1Table() {
-		// fill in
-		return null;
+		Map<NonTerm, Map<Term, Rule>> lookup = new HashMap<>();
+		Map<Rule, Set<Term>> firstp = calc.getFirstp();
+		for (Rule r : firstp.keySet()) {
+			if (!lookup.containsKey(r.getLHS())) {
+				lookup.put(r.getLHS(), new HashMap<Term,Rule>());
+			}
+			Map<Term,Rule> value = lookup.get(r.getLHS());
+			for (Term t : firstp.get(r)) {
+				value.put(t, r);
+			}
+		}
+		return lookup;
 	}
 }

@@ -4,6 +4,7 @@
 package pp.block2.cc.ll;
 
 import pp.block2.cc.NonTerm;
+import pp.block2.cc.Symbol;
 import pp.block2.cc.SymbolFactory;
 import pp.block2.cc.Term;
 
@@ -38,23 +39,47 @@ public class Grammars {
 	}
 
 	public static Grammar makeGrammarIf() {
-		// Define the non-terminals
+		//Define non-terminals
 		NonTerm stat = new NonTerm("Stat");
-		NonTerm elsePart = new NonTerm("ElsePart");
-		// Define the terminals, using the Sentence.g4 lexer grammar
+		NonTerm elsepart = new NonTerm("ElsePart");
+		// define the terminals
 		SymbolFactory fact = new SymbolFactory(If.class);
-		Term iffy = fact.getTerminal(If.IF);
-		Term expressy = fact.getTerminal(If.COND);
-		Term theny = fact.getTerminal(If.THEN);
-		Term elsy = fact.getTerminal(If.ELSE);
-		Term assigny = fact.getTerminal(If.ASSIGN);
-		// Build the context free grammar
+		Term ifT = fact.getTerminal(If.IF);
+		Term then = fact.getTerminal(If.THEN);
+		Term cond = fact.getTerminal(If.COND);
+		Term elseT = fact.getTerminal(If.ELSE);
+		Term assign = fact.getTerminal(If.ASSIGN);
 		Grammar g = new Grammar(stat);
-		g.addRule(stat, assigny);
-		g.addRule(stat, iffy, expressy, theny, stat, elsePart);
-		g.addRule(elsePart, elsy, stat);
-		//g.addRule(elsePart, Symbol.EMPTY);
-		// moet deze episilon er wel bij?
+		g.addRule(elsepart, elseT, stat);
+		g.addRule(elsepart, Symbol.EMPTY);
+		g.addRule(elsepart,Symbol.EOF); //well how to find this without adding the rule
+		g.addRule(stat, assign);
+		g.addRule(stat, ifT, cond, then, stat, elsepart);
+		return g;
+	}
+
+	public static Grammar makeCCExercise4(){
+		//Define non-terminals
+		NonTerm l = new NonTerm("L");
+		NonTerm r = new NonTerm("R");
+		NonTerm r2 = new NonTerm("R\'");
+		NonTerm q = new NonTerm("Q");
+		NonTerm q2 = new NonTerm("Q\'");
+		// define the terminals
+		SymbolFactory fact = new SymbolFactory(CCExercise4.class);
+		Term a = fact.getTerminal(CCExercise4.A);
+		Term b = fact.getTerminal(CCExercise4.B);
+		Term c = fact.getTerminal(CCExercise4.C);
+		Grammar g = new Grammar(l);
+		g.addRule(l, r, a);
+		g.addRule(l, q, b ,a);
+		g.addRule(r, a, b, a, r2);
+		g.addRule(r, c, a, b, a, r2);
+		g.addRule(r2, b, c, r2);
+		g.addRule(r2, Symbol.EMPTY);
+		g.addRule(q, b, q2);
+		g.addRule(q2, b, c);
+		g.addRule(q2, c);
 		return g;
 	}
 }
