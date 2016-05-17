@@ -13,7 +13,7 @@ public class SymbolTableImplementation implements SymbolTable {
 
     public SymbolTableImplementation() {
         scopeLevelDictionary = new HashMap<>();
-        scopeLevelDictionary.put(0, new HashSet<>());
+        scopeLevelDictionary.put(0, new HashSet<String>());
     }
 
     public HashMap<Integer, Set<String>> getMap(){
@@ -22,7 +22,7 @@ public class SymbolTableImplementation implements SymbolTable {
 
     @Override
     public void openScope() {
-        scopeLevelDictionary.put(scopeLevelDictionary.size(), new HashSet<>());
+        scopeLevelDictionary.put(scopeLevelDictionary.size(), new HashSet<String>());
     }
 
     @Override

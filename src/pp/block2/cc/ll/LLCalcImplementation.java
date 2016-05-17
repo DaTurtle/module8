@@ -73,7 +73,7 @@ public class LLCalcImplementation implements LLCalc{
         }
         Map<NonTerm, Set<Term>> follow = new HashMap<>();
         for(NonTerm termo : grammar.getNonterminals()){
-            follow.put(termo, new HashSet<>());
+            follow.put(termo, new HashSet<Term>());
         }
         Set<Term> temporarySet = follow.get(grammar.getStart());
         temporarySet.add(Symbol.EOF);
