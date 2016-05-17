@@ -45,12 +45,6 @@ public class Calculator extends CalcBaseListener {
         temps.put(ctx, temps.get(ctx.getChild(1)).multiply(new BigInteger("-1")));
     }
 
-    @Override public void exitSubtraction(@NotNull CalcParser.SubtractionContext ctx) {
-        BigInteger value = BigInteger.ZERO;
-        value = value.add(temps.get(ctx.getChild(0)));
-        value = value.subtract(temps.get(ctx.getChild(2)));
-        temps.put(ctx, value);
-    }
 
     @Override public void exitMultiplication(@NotNull CalcParser.MultiplicationContext ctx) {
         BigInteger value = BigInteger.ONE;

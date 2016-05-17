@@ -1,4 +1,4 @@
-// Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/ll\Calc.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/JansRekenmachine\Calc.g4 by ANTLR 4.5.1
 package pp.block2.cc.JansRekenmachine;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -32,13 +32,6 @@ public class CalcBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements C
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitNegation(CalcParser.NegationContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitSubtraction(CalcParser.SubtractionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

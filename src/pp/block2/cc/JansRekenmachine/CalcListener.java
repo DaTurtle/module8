@@ -1,4 +1,4 @@
-// Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/ll\Calc.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/JansRekenmachine\Calc.g4 by ANTLR 4.5.1
 package pp.block2.cc.JansRekenmachine;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -43,18 +43,6 @@ public interface CalcListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNegation(CalcParser.NegationContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code subtraction}
-	 * labeled alternative in {@link CalcParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubtraction(CalcParser.SubtractionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code subtraction}
-	 * labeled alternative in {@link CalcParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubtraction(CalcParser.SubtractionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code multiplication}
 	 * labeled alternative in {@link CalcParser#expr}.

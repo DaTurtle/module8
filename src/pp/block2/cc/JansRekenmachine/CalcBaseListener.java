@@ -1,4 +1,4 @@
-// Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/ll\Calc.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Bas/Documents/GitHub/module8/src/pp/block2/cc/JansRekenmachine\Calc.g4 by ANTLR 4.5.1
 package pp.block2.cc.JansRekenmachine;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -47,18 +47,6 @@ public class CalcBaseListener implements CalcListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNegation(CalcParser.NegationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSubtraction(CalcParser.SubtractionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSubtraction(CalcParser.SubtractionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

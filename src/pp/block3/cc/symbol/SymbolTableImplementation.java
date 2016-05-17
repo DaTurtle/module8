@@ -8,7 +8,7 @@ import java.util.HashSet;
  */
 public class SymbolTableImplementation implements SymbolTable {
 
-    private HashMap<Integer, HashSet<String>> scopeLevelDictionary = new HashMap<>();
+    private HashMap<Integer, HashMap<Integer, HashSet<String>>> scopeLevelDictionary = new HashMap<>();
 
     @Override
     public void openScope() {
@@ -22,6 +22,7 @@ public class SymbolTableImplementation implements SymbolTable {
         }
 
     }
+
 
     @Override
     public boolean add(String id) {
