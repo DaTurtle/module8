@@ -7,6 +7,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import pp.block2.cc.Parser;
 
 import java.io.File;
 import java.io.FileReader;
@@ -67,12 +68,20 @@ public class EmoteChecker extends EmoteBaseListener {
 
     public static void main(String[] args) {
         EmoteChecker ec = new EmoteChecker("ok1.txt");
-        for (Exception e : ec.errorlist) {
-            System.err.println(e.toString());
+        if (ec.errorlist.size() == 0) {
+            System.out.println("No errors in file: \"" + ec.path + "\"");
+        } else {
+            for (Exception e : ec.errorlist) {
+                System.err.println(e.toString());
+            }
         }
         ec = new EmoteChecker("err1.txt");
-        for (Exception e : ec.errorlist) {
-            System.err.println(e.toString());
+        if (ec.errorlist.size() == 0) {
+            System.out.println("No errors in file: \"" + ec.path + "\"");
+        } else {
+            for (Exception e : ec.errorlist) {
+                System.err.println(e.toString());
+            }
         }
     }
 }
