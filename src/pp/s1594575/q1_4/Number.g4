@@ -20,8 +20,23 @@ digit returns [int val]
   }
   ;
 
-binary [int input] returns [boolean result]
-  : 'b' seq {
+binary returns [boolean result]
+  : prf {
+    char c = $PRF.getText().charAt(0);
+    $result = (c == 'b');
+  }
+  ;
 
+hexadecimal returns [boolean result]
+  : prf {
+    char c = $PRF.getText().charAt(0);
+    $result = (c == 'x');
+  }
+  ;
+
+value returns [int val]
+  : num {
+    char c = $PRF.getText().charAt(0);
+    $result = (c == 'x');
   }
   ;
