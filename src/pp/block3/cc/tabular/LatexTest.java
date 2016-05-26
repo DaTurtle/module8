@@ -20,14 +20,14 @@ public class LatexTest {
         FileReader fr = null;
         ANTLRInputStream ain = null;
         try {
-            fr = new FileReader("C:\\Users\\Jan-Willem\\IdeaProjects\\module8\\src\\pp\\block3\\cc\\tabular\\tabular-1.tex");
+            fr = new FileReader("C:\\Users\\Jan-Willem\\IdeaProjects\\module8\\src\\pp\\block3\\cc\\tabular\\tabular-5.tex");
             ain = new ANTLRInputStream(fr);
         } catch (java.io.IOException e) {
             e.printStackTrace();
         }
         LatexLexer llex = new LatexLexer(ain);
         LatexParser lpars = new LatexParser(new CommonTokenStream(llex));
-        ParseTree tree = lpars.total();
+        ParseTree tree = lpars.table();
         System.out.println(tree.getText());
     }
 }

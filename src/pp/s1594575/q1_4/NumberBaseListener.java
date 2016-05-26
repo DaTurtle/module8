@@ -1,52 +1,64 @@
-// Generated from C:/Users/Jan-Willem/IdeaProjects/module8/src/pp/block3/cc/tabular\Latex.g4 by ANTLR 4.5.1
-package pp.block3.cc.tabular;
+// Generated from C:/Users/Jan-Willem/IdeaProjects/module8/src/pp/s1594575/q1_4\Number.g4 by ANTLR 4.5.1
+package pp.s1594575.q1_4;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link LatexListener},
+ * This class provides an empty implementation of {@link NumberListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class LatexBaseListener implements LatexListener {
+public class NumberBaseListener implements NumberListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTable(LatexParser.TableContext ctx) { }
+	@Override public void enterNum(NumberParser.NumContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTable(LatexParser.TableContext ctx) { }
+	@Override public void exitNum(NumberParser.NumContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRow(LatexParser.RowContext ctx) { }
+	@Override public void enterSeq(NumberParser.SeqContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRow(LatexParser.RowContext ctx) { }
+	@Override public void exitSeq(NumberParser.SeqContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEntry(LatexParser.EntryContext ctx) { }
+	@Override public void enterPrf(NumberParser.PrfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEntry(LatexParser.EntryContext ctx) { }
+	@Override public void exitPrf(NumberParser.PrfContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDig(NumberParser.DigContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDig(NumberParser.DigContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

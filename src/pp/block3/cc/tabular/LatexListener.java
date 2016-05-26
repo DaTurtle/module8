@@ -8,36 +8,6 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface LatexListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link LatexParser#total}.
-	 * @param ctx the parse tree
-	 */
-	void enterTotal(LatexParser.TotalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LatexParser#total}.
-	 * @param ctx the parse tree
-	 */
-	void exitTotal(LatexParser.TotalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LatexParser#comment}.
-	 * @param ctx the parse tree
-	 */
-	void enterComment(LatexParser.CommentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LatexParser#comment}.
-	 * @param ctx the parse tree
-	 */
-	void exitComment(LatexParser.CommentContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LatexParser#tabular}.
-	 * @param ctx the parse tree
-	 */
-	void enterTabular(LatexParser.TabularContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LatexParser#tabular}.
-	 * @param ctx the parse tree
-	 */
-	void exitTabular(LatexParser.TabularContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LatexParser#table}.
 	 * @param ctx the parse tree
 	 */

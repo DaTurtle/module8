@@ -1,7 +1,5 @@
 lexer grammar Ex3Vocab;
 
-@header{package pp.block3.cc.antlr;}
-
 EXPO  : '^';
 PLUS  : '+';
 EQUAL : '=';

@@ -1,17 +1,17 @@
 grammar Latex;
 
-@header{package pp.block3.cc.tabular;}
+table : TABLESTART row* TABLEEND;
 
-fragment LCR  : ('l' | 'c' | 'r')+;
-fragment ALPHANUM : ('a'..'z' | 'A'..'Z' | '0'..'9');
-fragment EOL : [\n\r];
+row : entry (SEP entry)* ENDROW;
 
-total : (comment | tabular)+;
-comment : '%' (ALPHANUM | ' ')*? EOL ;
-tabular : (' '*) '\\begin{tabular}{'LCR'}' (' '*) table (' '*) '\\end{tabular}' (' '*) ;
-table : row*;
-row : (' '*) entry (' '*) ('&' (' '*) entry (' '*) )*  '\\\\' ;
-entry : ALPHANUM* ;
+entry: ENTRY?;
 
+TABLESTART : WS '\\begin{tabular}{' [lcr]+ '}' WS;
+ENDROW : WS '\\\\' WS;
+SEP : WS '&' WS;
+ENTRY : [A-Za-z0-9]+;
+TABLEEND : WS '\\end{tabular}' WS;
 
-WS : [ \t\n\r]+ -> skip;
+COMMENT : '%' ~'\n'* -> skip;
+
+fragment WS : [ \t\n\r]*;
