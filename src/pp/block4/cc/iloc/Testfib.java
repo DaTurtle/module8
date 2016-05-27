@@ -8,6 +8,7 @@ import pp.iloc.parse.FormatException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by willem on 5/27/16.
@@ -31,10 +32,35 @@ public class Testfib {
         String pretty = prog.prettyPrint();
         System.out.println(pretty);
 
-        Simulator sim = new Simulator(prog);
-        sim.getVM().setNum("n", 10);
-        sim.run();
-        System.out.println(sim.getVM().getReg("r_z"));
-        assert (sim.getVM().getReg("r_z") == 89);
+        ArrayList<Integer> vallist = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            Simulator sim = new Simulator(prog);
+            sim.getVM().setNum("n", i);
+            sim.run();
+            System.out.println(sim.getVM().getReg("r_z"));
+            vallist.add(i, sim.getVM().getReg("r_z"));
+        }
+
+        String fibpath = "/home/willem/IdeaProjects/antlr/src/pp/block4/cc/iloc/fib.iloc";
+        Program prog2 = null;
+        try {
+            File file = new File(fibpath);
+            System.out.println(file.getAbsolutePath());
+            prog2 = assembler.assemble(file);
+        } catch (FormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String pretty2 = prog.prettyPrint();
+        System.out.println(pretty2);
+
+        for (int i = 0; i < 15; i++) {
+            Simulator sim = new Simulator(prog2);
+            sim.getVM().setNum("n", i);
+            sim.run();
+            System.out.println(sim.getVM().getReg("r_z"));
+            assert sim.getVM().getReg("r_z") == vallist.get(i);
+        }
     }
 }
