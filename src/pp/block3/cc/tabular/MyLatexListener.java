@@ -31,7 +31,7 @@ public class MyLatexListener extends LatexBaseListener {
 
     public String getHtml() {
         init();
-        ParseTree p = parse("C:\\Users\\Jan-Willem\\IdeaProjects\\module8\\src\\pp\\block3\\cc\\tabular\\tabular-2.tex");
+        ParseTree p = parse("/home/willem/IdeaProjects/antlr/src/pp/block3/cc/tabular/tabular-4.tex");
         if (el.getErrorlist().size() > 0) {
             throw new RuntimeException("Errors while parsing the file");
         }

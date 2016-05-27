@@ -21,7 +21,7 @@ public class TreeListenerTest {
 
     @Test
     public void fail(){
-        MyTreeListener treeListener = new MyTreeListener("C:\\Users\\Bas\\Documents\\GitHub\\module8\\src\\pp\\block3\\cc\\symbol\\input2");
+        MyTreeListener treeListener = new MyTreeListener("/home/willem/IdeaProjects/antlr/src/pp/block3/cc/symbol/input2");
         List<Exception> errorlist = treeListener.getErrorlist();
         for (Exception e : errorlist) {
             System.out.println(e.toString());

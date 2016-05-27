@@ -168,8 +168,8 @@ public class BottomUpCFGBuilder extends FragmentBaseListener {
 //			return;
 //		}
 		ArrayList<String> files = new ArrayList<>();
-		files.add("C:\\Users\\Jan-Willem\\IdeaProjects\\module8\\src\\pp\\block4\\cc\\cfg\\program41");
-		files.add("C:\\Users\\Jan-Willem\\IdeaProjects\\module8\\src\\pp\\block4\\cc\\cfg\\program42");
+		files.add("/home/willem/IdeaProjects/antlr/src/pp/block4/cc/cfg/Program41");
+		files.add("/home/willem/IdeaProjects/antlr/src/pp/block4/cc/cfg/program42");
 		BottomUpCFGBuilder builder = new BottomUpCFGBuilder();
 		for (String filename : files) {
 			File file = new File(filename);

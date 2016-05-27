@@ -16,11 +16,12 @@ import java.io.IOException;
  */
 public class Testiloc {
 
-    Assembler assembler = Assembler.instance();
+
 
     @Test
     public void test() {
-        String maxpath = "C:\\Users\\Jan-Willem\\IdeaProjects\\module8\\src\\pp\\block4\\cc\\iloc\\max.iloc";
+        Assembler assembler = Assembler.instance();
+        String maxpath = "/home/willem/IdeaProjects/antlr/src/pp/block4/cc/iloc/max.iloc";
         Program prog = null;
         try {
             File file = new File(maxpath);
