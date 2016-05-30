@@ -32,6 +32,7 @@ public class Testfib {
         String pretty = prog.prettyPrint();
         System.out.println(pretty);
 
+
         ArrayList<Integer> vallist = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
             Simulator sim = new Simulator(prog);
@@ -41,7 +42,7 @@ public class Testfib {
             vallist.add(i, sim.getVM().getReg("r_z"));
         }
 
-        String fibpath = "/home/willem/IdeaProjects/antlr/src/pp/block4/cc/iloc/fib.iloc";
+        String fibpath = "/home/willem/IdeaProjects/antlr/src/pp/block4/cc/iloc/fib2.iloc";
         Program prog2 = null;
         try {
             File file = new File(fibpath);

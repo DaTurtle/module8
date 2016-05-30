@@ -1,0 +1,27 @@
+start: loadI @n => r_n
+       loadI 1 => r_x
+       loadI 1 => r_y
+       loadI 1 => r_z
+       loadI 1 => r_one
+       loadI 10 => r_1
+       loadI 20 => r_2
+       loadI 30 => r_3
+       loadI 40 => r_4
+
+while: load r_4 => r_n
+       cmp_GT r_n, r_one => r_cmp
+       cbr r_cmp -> body, end
+body:  load r_3 => r_z
+       add r_x, r_y => r_z
+       store r_z => r_3
+       load r_2 => r_y
+       i2i r_y => r_x
+       store r_x => r_1
+       load r_3 => r_z
+       i2i r_z => r_y
+       store r_y => r_2
+       load r_4 => r_n
+       subI r_n, 1 => r_n
+       store r_n => r_4
+       jumpI -> while
+end:   out "Fib: ", r_z
