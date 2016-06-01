@@ -1,46 +1,43 @@
-start:  loadI 1 => r_x
-		loadI @x => r_1
-		store r_x => r_1
+start:  loadI @x => r_x
+		loadI 0 => r_m
+		storeAI r_x => r_m, 0
 		
-		loadI 1 => r_y
-		loadI @y => r_2
-		store r_y => r_2
+		loadI @y => r_y
+		storeAI r_y => r_m, 4
 		
-		loadI 1 => r_z
-		loadI @z => r_3
-		store r_z => r_3
+		loadI @z => r_z
+		storeAI r_z => r_m, 8
 		
 		loadI @n => r_n
-		loadI @n => r_4
+		storeAI r_n => r_m, 12
 		
 		loadI 1 => r_c
 
 while: 	cmp_GT r_n, r_c => r_cmp
 		cbr r_cmp -> body, end
 
-body:	store r_n => r_4
+body:	storeAI r_n => r_m, 12
 
-		load r_1 => r_x		
-		load r_2 => r_y
-		load r_3 => r_z
+		loadAI r_m, 0 => r_x		
+		loadAI r_m, 4 => r_y
+		loadAI r_m, 8 => r_z
 		
 		add r_x, r_y => r_z
 		
 		i2i r_y => r_x
-
 		i2i r_z => r_y
 		
-		store r_x => r_1
-		store r_y => r_2
-		store r_z => r_3
+		storeAI r_x => r_m, 0
+		storeAI r_y => r_m, 4
+		storeAI r_z => r_m, 8
 			
-		load r_4 => r_n
+		loadAI r_m, 12 => r_n
 				
 		subI r_n, 1 => r_n
 
-		store r_n => r_4
+		storeAI r_n => r_m, 12
 		
-		load r_4 => r_n
+		loadAI r_m, 12 => r_n
 		
 		jumpI -> while
 end:	out "Fib: ", r_z
