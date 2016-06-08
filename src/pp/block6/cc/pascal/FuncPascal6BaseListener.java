@@ -1,6 +1,5 @@
 // Generated from C:/Users/Jan-Willem/IdeaProjects/module8/src/pp/block6/cc/pascal\FuncPascal6.g4 by ANTLR 4.5.1
 package pp.block6.cc.pascal;
-package pp.block6.cc.pascal;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

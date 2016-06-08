@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 import pp.block5.cc.pascal.SimplePascalBaseVisitor;
+import pp.block5.cc.simple.Result;
 import pp.iloc.Simulator;
 import pp.iloc.model.Label;
 import pp.iloc.model.Num;

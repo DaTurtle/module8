@@ -1,0 +1,29 @@
+start:  loadI 0 => r_n
+        in "Argument? " => r_n
+        loadI 0 => r_result
+        loadI 0 => r_stack
+        push r_n
+        addI r_stack, 1 => r_stack
+        loadI 1 => r_one
+        jumpI -> fib
+
+fib:    cmp_GE r_stack, r_one => r_cmp
+        cbr r_cmp -> if, end
+
+if:     pop => r_n
+        subI r_stack, 1 => r_stack
+        cmp_LE r_n, r_one => r_cmp
+        cbr r_cmp -> then, else
+
+then:   addI r_result, 1 => r_result
+        jumpI -> fib
+
+else:   subI r_n, 1 => r_n
+        push r_n
+        addI r_stack, 1 => r_stack
+        subI r_n, 1 => r_n
+        push r_n
+        addI r_stack, 1 => r_stack
+        jumpI -> fib
+
+end:   out "Result: ", r_result
